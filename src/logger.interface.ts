@@ -16,24 +16,22 @@ export interface Logger {
  */
 export class ConsoleLogger implements Logger {
   trace(data: any, message?: string): void {
-    console.log(`[TRACE] ${message || ''}`, data);
+    console.log(`[TRACE] ${message || ""}`, JSON.stringify(data, null, 2));
   }
 
   debug(data: any, message?: string): void {
-    console.debug(`[DEBUG] ${message || ''}`, data);
+    console.debug(`[DEBUG] ${message || ""}`, JSON.stringify(data, null, 2));
   }
 
   info(data: any, message?: string): void {
-    console.info(`[INFO] ${message || ''}`, data);
+    console.info(`[INFO] ${message || ""}`, JSON.stringify(data, null, 2));
   }
 
   warn(data: any, message?: string): void {
-    console.warn(`[WARN] ${message || ''}`, data);
+    console.warn(`[WARN] ${message || ""}`, JSON.stringify(data, null, 2));
   }
 
   error(data: any, message?: string): void {
-    console.error(`[ERROR] ${message || ''}`, data);
+    console.error(`[ERROR] ${message || ""}`, JSON.stringify(data, null, 2));
   }
 }
-
-
