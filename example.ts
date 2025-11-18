@@ -65,16 +65,3 @@ async function exemplo4() {
   const posts = await client.get("/posts");
   console.log("Posts:", posts);
 }
-
-// Exemplo 5: Desabilitar remoção de dados sensíveis
-async function exemplo5() {
-  const client = new HttpClient({
-    logger: new ConsoleLogger(),
-    removeSensitiveData: false, // Mantém dados sensíveis nos logs
-  });
-
-  const data = await client.post("https://api.example.com/login", {
-    username: "user",
-    password: "secret123", // Será logado sem mascaramento
-  });
-}

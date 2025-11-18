@@ -1,6 +1,6 @@
 # axios-logger-client
 
-Axios HTTP client com logging opcional de requests e responses, incluindo remoção automática de dados sensíveis.
+Axios HTTP client com logging opcional de requests e responses.
 
 ## Instalação
 
@@ -13,42 +13,42 @@ npm install axios-logger-client axios
 ### Sem Logger (sem logging)
 
 ```typescript
-import { HttpClient } from 'axios-logger-client';
+import { HttpClient } from "axios-logger-client";
 
 const client = new HttpClient();
 
-const data = await client.get('https://api.example.com/users');
+const data = await client.get("https://api.example.com/users");
 ```
 
 ### Com Logger Padrão (console.log)
 
 ```typescript
-import { HttpClient } from 'axios-logger-client';
+import { HttpClient } from "axios-logger-client";
 
 const client = new HttpClient({
   enableLogging: true, // Habilita logging com console.log
 });
 
-const data = await client.post('https://api.example.com/users', {
-  name: 'John Doe',
-  email: 'john@example.com',
+const data = await client.post("https://api.example.com/users", {
+  name: "John Doe",
+  email: "john@example.com",
 });
 ```
 
 ### Com Logger Customizado
 
 ```typescript
-import { HttpClient, Logger } from 'axios-logger-client';
+import { HttpClient, Logger } from "axios-logger-client";
 
 // Exemplo com PinoLogger (nestjs-pino)
-import { PinoLogger } from 'nestjs-pino';
+import { PinoLogger } from "nestjs-pino";
 
 const pinoLogger = new PinoLogger();
-pinoLogger.setContext('MyApiClient');
+pinoLogger.setContext("MyApiClient");
 
 const client = new HttpClient({
   logger: pinoLogger,
-  context: 'MyApiClient',
+  context: "MyApiClient",
 });
 
 // Exemplo com logger customizado
@@ -70,30 +70,21 @@ const client = new HttpClient({
 ### Com Configuração do Axios
 
 ```typescript
-import { HttpClient } from 'axios-logger-client';
+import { HttpClient } from "axios-logger-client";
 
 const client = new HttpClient({
   logger: myLogger,
   axiosConfig: {
-    baseURL: 'https://api.example.com',
+    baseURL: "https://api.example.com",
     timeout: 5000,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   },
 });
 
 // Agora você pode usar URLs relativas
-const users = await client.get('/users');
-```
-
-### Desabilitar Remoção de Dados Sensíveis
-
-```typescript
-const client = new HttpClient({
-  logger: myLogger,
-  removeSensitiveData: false, // Mantém dados sensíveis nos logs
-});
+const users = await client.get("/users");
 ```
 
 ## API
@@ -110,7 +101,6 @@ new HttpClient(options?: HttpClientOptions)
 
 - `logger?: Logger` - Logger opcional para registrar requests/responses
 - `enableLogging?: boolean` - Habilita logging (padrão: `true` se logger fornecido, `false` caso contrário)
-- `removeSensitiveData?: boolean` - Remove dados sensíveis dos logs (padrão: `true`)
 - `context?: string` - Contexto para os logs (padrão: `'HttpClient'`)
 - `axiosConfig?: AxiosRequestConfig` - Configuração base do axios
 
@@ -134,18 +124,6 @@ interface Logger {
 }
 ```
 
-## Dados Sensíveis Removidos
-
-Por padrão, os seguintes dados são mascarados nos logs:
-
-- `token`
-- `authorization`
-- `password`
-- `cvv`
-- `securitycode`
-- `security_code`
-- `cardnumber` / `card_number` (mascarado como `****1234`)
-
 ## Exemplos de Logs
 
 ### Request/Response de Sucesso
@@ -158,11 +136,10 @@ Por padrão, os seguintes dados são mascarados nos logs:
       "url": "https://api.example.com/users",
       "body": {
         "name": "John Doe",
-        "email": "john@example.com",
-        "password": "pas****"
+        "email": "john@example.com"
       },
       "headers": {
-        "authorization": "Bea****"
+        "Content-Type": "application/json"
       }
     },
     "response": {
@@ -215,5 +192,3 @@ npm publish
 ## Licença
 
 MIT
-
-

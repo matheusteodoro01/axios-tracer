@@ -1,7 +1,7 @@
 {
   "name": "axios-logger-client",
-  "version": "1.0.0",
-  "description": "Axios HTTP client with optional request/response logging and sensitive data removal",
+  "version": "1.0.1",
+  "description": "Axios HTTP client with optional request/response logging",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
