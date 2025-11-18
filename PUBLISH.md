@@ -27,8 +27,8 @@ Se mostrar seu username, está logado. Se não, execute `npm login`.
 
 ⚠️ **IMPORTANTE**: O nome do pacote deve ser único no npm. 
 
-O nome atual é `axios-logger-client` (sem escopo). Se você quiser publicar como scoped package (`@seu-usuario/...`), você pode:
-- Mudar o nome para `@seu-usuario/axios-logger-client` no `package.json`
+O nome atual é `trix-http` (sem escopo). Se você quiser publicar como scoped package (`@seu-usuario/...`), você pode:
+- Mudar o nome para `@seu-usuario/trix-http` no `package.json`
 
 **Opção A: Publicar como scoped package (requer organização)**
 ```bash
@@ -38,7 +38,7 @@ npm publish --access public
 **Opção B: Mudar o nome para não-scoped**
 Edite o `package.json` e mude:
 ```json
-"name": "axios-logger-client"
+"name": "trix-http"
 ```
 Depois publique normalmente:
 ```bash
@@ -116,7 +116,7 @@ Quando quiser publicar uma nova versão:
 
 ### Erro: "Package name already exists"
 - Escolha outro nome no `package.json`
-- Ou use um scoped package: `@seu-usuario/axios-logger-client`
+- Ou use um scoped package: `@seu-usuario/trix-http`
 
 ### Erro: "You cannot publish over the previously published versions"
 - Atualize a versão no `package.json`

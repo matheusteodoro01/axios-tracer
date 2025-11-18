@@ -1,5 +1,5 @@
 /**
- * Exemplo de uso do axios-logger-client
+ * Exemplo de uso do trix-http
  *
  * Este arquivo é apenas para referência e não será incluído no pacote npm
  */

@@ -1,11 +1,11 @@
-# axios-logger-client
+# trix-http
 
 Axios HTTP client com logging opcional de requests e responses.
 
 ## Instalação
 
 ```bash
-npm install axios-logger-client axios
+npm install trix-http axios
 ```
 
 ## Uso Básico
@@ -13,7 +13,7 @@ npm install axios-logger-client axios
 ### Sem Logger (sem logging)
 
 ```typescript
-import { HttpClient } from "axios-logger-client";
+import { HttpClient } from "trix-http";
 
 const client = new HttpClient();
 
@@ -23,7 +23,7 @@ const data = await client.get("https://api.example.com/users");
 ### Com Logger Padrão (console.log)
 
 ```typescript
-import { HttpClient } from "axios-logger-client";
+import { HttpClient } from "trix-http";
 
 const client = new HttpClient({
   enableLogging: true, // Habilita logging com console.log
@@ -38,7 +38,7 @@ const data = await client.post("https://api.example.com/users", {
 ### Com Logger Customizado
 
 ```typescript
-import { HttpClient, Logger } from "axios-logger-client";
+import { HttpClient, Logger } from "trix-http";
 
 // Exemplo com PinoLogger (nestjs-pino)
 import { PinoLogger } from "nestjs-pino";
@@ -70,7 +70,7 @@ const client = new HttpClient({
 ### Com Configuração do Axios
 
 ```typescript
-import { HttpClient } from "axios-logger-client";
+import { HttpClient } from "trix-http";
 
 const client = new HttpClient({
   logger: myLogger,
