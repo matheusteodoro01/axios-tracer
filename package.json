@@ -1,5 +1,5 @@
 {
-  "name": "@gsc/axios-logger-client",
+  "name": "axios-logger-client",
   "version": "1.0.0",
   "description": "Axios HTTP client with optional request/response logging and sensitive data removal",
   "main": "dist/index.js",
@@ -35,4 +35,3 @@
     "README.md"
   ]
 }
-

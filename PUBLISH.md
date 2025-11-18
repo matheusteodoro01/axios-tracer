@@ -27,9 +27,8 @@ Se mostrar seu username, está logado. Se não, execute `npm login`.
 
 ⚠️ **IMPORTANTE**: O nome do pacote deve ser único no npm. 
 
-O nome atual é `@gsc/axios-logger-client`. Se você quiser publicar como scoped package (`@gsc/...`), você precisa:
-- Ter uma organização no npm com o nome `gsc`, OU
-- Mudar o nome para algo sem escopo (ex: `axios-logger-client`)
+O nome atual é `axios-logger-client` (sem escopo). Se você quiser publicar como scoped package (`@seu-usuario/...`), você pode:
+- Mudar o nome para `@seu-usuario/axios-logger-client` no `package.json`
 
 **Opção A: Publicar como scoped package (requer organização)**
 ```bash
