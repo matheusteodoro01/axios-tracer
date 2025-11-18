@@ -62,6 +62,19 @@ export class HttpClient implements HttpClientAdapter {
   }
 
   private setupInterceptors(): void {
+    // Interceptor de request para capturar o timestamp de início
+    this.http.interceptors.request.use(
+      (config) => {
+        // Adiciona timestamp de início no metadata do request
+        (config as any).metadata = { startTime: Date.now() };
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+    // Interceptor de response para calcular duração e fazer log
     this.http.interceptors.response.use(
       (response) => {
         this.logResponse(response);
@@ -77,6 +90,9 @@ export class HttpClient implements HttpClientAdapter {
   private logResponse(response: any): void {
     if (!this.logger) return;
 
+    const startTime = (response.config as any)?.metadata?.startTime;
+    const duration = startTime ? Date.now() - startTime : null;
+
     const logData = {
       data: {
         request: {
@@ -91,6 +107,7 @@ export class HttpClient implements HttpClientAdapter {
           statusCode: response.status,
           body: response.data,
           headers: response?.headers,
+          duration: duration !== null ? `${duration}ms` : "unknown",
         },
       },
     };
@@ -104,6 +121,9 @@ export class HttpClient implements HttpClientAdapter {
 
   private logError(error: AxiosError): void {
     if (!this.logger) return;
+
+    const startTime = (error.config as any)?.metadata?.startTime;
+    const duration = startTime ? Date.now() - startTime : null;
 
     const logData = {
       data: {
@@ -120,9 +140,10 @@ export class HttpClient implements HttpClientAdapter {
               statusCode: error.response.status,
               body: error.response.data,
               headers: error.response.headers,
+              duration: duration !== null ? `${duration}ms` : "unknown",
             }
           : {
-              duration: "unknown",
+              duration: duration !== null ? `${duration}ms` : "unknown",
               statusCode: "unknown",
               body: "unknown",
               headers: "unknown",

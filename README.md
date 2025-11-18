@@ -147,7 +147,8 @@ interface Logger {
       "body": {
         "id": 1,
         "name": "John Doe"
-      }
+      },
+      "duration": "245ms"
     }
   }
 }
@@ -166,7 +167,8 @@ interface Logger {
       "statusCode": 404,
       "body": {
         "error": "User not found"
-      }
+      },
+      "duration": "123ms"
     }
   }
 }
